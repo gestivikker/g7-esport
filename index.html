@@ -3,757 +3,944 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G7 ESPORT OFFICIAL</title>
+    <title>G7 OFFICIAL HUB</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        g7dark: '#050505',
-                        g7card: '#0a0a0c',
-                        g7gold: '#FFB800', 
-                        g7goldHover: '#E6A600',
-                        g7accent: '#252525',
-                    },
-                    boxShadow: {
-                        'g7-glow': '0 0 20px rgba(255, 184, 0, 0.15)',
-                        'g7-glow-hover': '0 0 30px rgba(255, 184, 0, 0.4)',
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { 
-            background-color: #050505; 
+        :root {
+            --neon-green: #00ff88;
+            --neon-blue: #00f3ff;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
-        } 
-        
-        /* Grid Background Animasi */
-        .esport-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                linear-gradient(rgba(255, 184, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 184, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: center center;
-            z-index: -2;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px) scale(3);
-            animation: moveGrid 15s linear infinite;
         }
 
-        /* Scanline Overlay */
-        .scanlines {
+        h1, h2, h3, .esports-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Animated Background Particles */
+        .bg-glow {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
-            background-size: 100% 4px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, rgba(0,0,0,0) 70%);
+            top: -200px;
+            left: -200px;
+            border-radius: 50%;
             z-index: -1;
-            pointer-events: none;
-        }
-
-        @keyframes moveGrid {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0) scale(3); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(50px) scale(3); }
+            animation: pulse-glow 8s infinite alternate;
         }
         
-        /* Sudut Terpotong Khas UI Game */
-        .clip-esport {
-            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-        }
-        
-        .clip-button {
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        .bg-glow-2 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,243,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            bottom: -150px;
+            right: -100px;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-glow 6s infinite alternate-reverse;
         }
 
-        /* Border Glow Dinamis */
-        .hud-border {
+        @keyframes pulse-glow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+            100% { transform: scale(1.2) translate(50px, 50px); opacity: 1; }
+        }
+
+        /* Card Hover Effects */
+        .g7-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
             position: relative;
-            background: linear-gradient(135deg, #111 0%, #000 100%);
+            overflow: hidden;
         }
-        .hud-border::before {
+
+        .g7-card::before {
             content: '';
             position: absolute;
-            top: -1px; left: -1px; right: -1px; bottom: -1px;
-            background: linear-gradient(45deg, #FFB800, transparent 40%, transparent 60%, #FFB800);
-            z-index: -1;
-            clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-            opacity: 0.5;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        /* Animasi Muncul Berurutan */
-        @keyframes slideRight {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .animate-item { 
-            animation: slideRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
-            opacity: 0; 
-        }
-        
-        .d-1 { animation-delay: 0.1s; }
-        .d-2 { animation-delay: 0.2s; }
-        .d-3 { animation-delay: 0.3s; }
-        .d-4 { animation-delay: 0.4s; }
-        .d-5 { animation-delay: 0.5s; }
-        .d-6 { animation-delay: 0.6s; }
-        .d-7 { animation-delay: 0.7s; }
-
-        /* Input Form Bergaya Terminal */
-        .esport-input {
-            background: rgba(255, 255, 255, 0.03);
-            border: none;
-            border-bottom: 2px solid #333;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-        .esport-input:focus {
-            background: rgba(255, 184, 0, 0.05);
-            border-bottom-color: #FFB800;
-            outline: none;
-            box-shadow: 0 5px 15px -5px rgba(255, 184, 0, 0.2);
+        .g7-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
 
-        /* Kustomisasi Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; }
-        ::-webkit-scrollbar-thumb:hover { background: #FFB800; }
+        .g7-card:hover::before {
+            left: 100%;
+        }
+
+        .g7-card:hover i {
+            color: var(--neon-green);
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Initial Entrance Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+<body class="antialiased min-h-screen flex flex-col items-center justify-center py-12 px-4 relative">
 
-<body class="min-h-screen flex items-center justify-center font-sans p-4 sm:p-8 relative">
-    
-    <div class="esport-bg"></div>
-    <div class="scanlines"></div>
-    
-    <!-- Ambient Glow Tengah -->
-    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-g7gold/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
 
-    <main class="w-full max-w-md hud-border clip-esport p-1 sm:p-1 relative z-10 shadow-g7-glow group hover:shadow-g7-glow-hover transition-shadow duration-700">
+    <main class="w-full max-w-3xl z-10">
         
-        <div class="bg-g7card clip-esport p-6 sm:p-8 relative h-full">
+        <header class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-block relative">
+                <div class="absolute inset-0 bg-green-500 blur-xl opacity-30 rounded-full"></div>
+                <img src="https://placehold.co/150x150/111/00ff88?text=G7" alt="G7 Logo" class="w-32 h-32 rounded-full border-2 border-green-500 shadow-[0_0_15px_rgba(0,255,136,0.5)] mx-auto relative z-10 mb-4 object-cover">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 tracking-wider">
+                G7 OFFICIAL
+            </h1>
+            <p class="text-gray-400 mt-2 text-lg uppercase tracking-[0.2em]">One Team, One Dream</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            <!-- Elemen Dekoratif HUD -->
-            <div class="absolute top-4 left-4 w-2 h-2 bg-g7gold"></div>
-            <div class="absolute top-4 right-4 text-[9px] font-mono text-g7gold/50 tracking-widest">SYS.G7.ONLINE</div>
-            <div class="absolute bottom-4 left-4 text-[9px] font-mono text-g7gold/50 tracking-widest">V.2.0.26</div>
-            <div class="absolute bottom-4 right-4 w-12 h-1 border-b-2 border-r-2 border-g7gold/30"></div>
-
-            <header class="text-center mb-10 mt-4 relative">
-                <!-- Glitch/Tech Logo -->
-                <div class="relative inline-block">
-                    <h1 class="text-7xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-                        G7
-                    </h1>
-                    <!-- Aksen Garis Emas -->
-                    <div class="absolute top-1/2 -left-8 w-6 h-[2px] bg-g7gold"></div>
-                    <div class="absolute top-1/2 -right-8 w-6 h-[2px] bg-g7gold"></div>
+            <button onclick="openModal()" class="g7-card fade-in-up flex items-center p-4 rounded-xl cursor-pointer w-full text-left" style="animation-delay: 0.2s;">
+                <div class="w-12 h-12 rounded-lg bg-black/50 flex items-center justify-center border border-gray-700 mr-4 shrink-0">
+                    <i class="fas fa-users-viewfinder text-2xl text-gray-300"></i>
                 </div>
-                <div class="mt-1">
-                    <span class="text-xl font-bold tracking-[0.3em] text-g7gold">ESPORT</span>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">GC Seleksi Academy</h2>
+                    <p class="text-xs text-green-400">Boy & Girl Division</p>
                 </div>
-                <div class="mt-3 flex justify-center items-center gap-2">
-                    <div class="w-8 h-[1px] bg-gray-700"></div>
-                    <p class="text-gray-400 text-[10px] font-bold tracking-[0.2em] uppercase">Official Portal</p>
-                    <div class="w-8 h-[1px] bg-gray-700"></div>
+            </button>
+
+            <button onclick="openCompetitiveModal()" class="g7-card fade-in-up flex items-center p-4 rounded-xl cursor-pointer w-full text-left" style="animation-delay: 0.3s;">
+                <div class="w-12 h-12 rounded-lg bg-black/50 flex items-center justify-center border border-gray-700 mr-4 shrink-0">
+                    <i class="fas fa-trophy text-2xl text-gray-300"></i>
                 </div>
-            </header>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">GC Seleksi Competitive</h2>
+                    <p class="text-xs text-cyan-400">Join the Pro Scene</p>
+                </div>
+            </button>
 
-            <nav class="flex flex-col gap-3 relative z-10">
-                
-                <!-- 1. Persyaratan -->
-                <button onclick="openModal()" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-1 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-g7gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">Persyaratan Join</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </button>
+            <a href="https://undangan-ratih-ardi.my.canva.site/g7-proposal-sponsorship" target="_blank" rel="noopener noreferrer" class="g7-card fade-in-up flex items-center p-4 rounded-xl" style="animation-delay: 0.4s;">
+                <div class="w-12 h-12 rounded-lg bg-black/50 flex items-center justify-center border border-gray-700 mr-4 shrink-0">
+                    <i class="fas fa-handshake text-2xl text-gray-300"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">Proposal Sponsor</h2>
+                    <p class="text-xs text-gray-400">Business & Partnership</p>
+                </div>
+            </a>
 
-                <!-- 2. WA -->
-                <a href="https://chat.whatsapp.com/BZIvLBjWIFcCRGd3CfdMXd?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-2 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-[#25D366] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">WhatsApp Member</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </a>
-                
-                <!-- 3. Proposal -->
-                <a href="https://undangan-ratih-ardi.my.canva.site/g7-proposal-sponsorship" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-3 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">Proposal Sponsor</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </a>
+            <a href="https://discord.com/invite/WarurUXT7" target="_blank" rel="noopener noreferrer" class="g7-card fade-in-up flex items-center p-4 rounded-xl" style="animation-delay: 0.5s;">
+                <div class="w-12 h-12 rounded-lg bg-indigo-600/20 flex items-center justify-center border border-indigo-500/50 mr-4 shrink-0">
+                    <i class="fab fa-discord text-2xl text-indigo-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">Discord Umum G7</h2>
+                    <p class="text-xs text-indigo-300">Join our Community</p>
+                </div>
+            </a>
 
-                <!-- 4. Discord -->
-                <a href="https://discord.gg/WarurUXT7" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-4 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-[#5865F2] transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">Discord Umum</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </a>
+            <a href="https://www.tiktok.com/@gsevenofficial" target="_blank" rel="noopener noreferrer" class="g7-card fade-in-up flex items-center p-4 rounded-xl" style="animation-delay: 0.6s;">
+                <div class="w-12 h-12 rounded-lg bg-pink-600/20 flex items-center justify-center border border-pink-500/50 mr-4 shrink-0">
+                    <i class="fab fa-tiktok text-2xl text-pink-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">TikTok Official</h2>
+                    <p class="text-xs text-pink-300">Watch our Highlights</p>
+                </div>
+            </a>
 
-                <!-- 5. TikTok -->
-                <a href="https://www.tiktok.com/@gsevenofficial" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-5 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-pink-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">TikTok Official</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </a>
+            <a href="https://www.instagram.com/GSEVEN7799" target="_blank" rel="noopener noreferrer" class="g7-card fade-in-up flex items-center p-4 rounded-xl" style="animation-delay: 0.7s;">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-yellow-500/20 via-red-500/20 to-purple-500/20 flex items-center justify-center border border-purple-500/50 mr-4 shrink-0">
+                    <i class="fab fa-instagram text-2xl text-purple-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide">Instagram Official G7</h2>
+                    <p class="text-xs text-purple-300">Follow for Updates</p>
+                </div>
+            </a>
 
-                <!-- 6. Instagram -->
-                <a href="https://www.instagram.com/GSEVEN7799" target="_blank" rel="noopener noreferrer" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-6 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-orange-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 8a4 4 0 014-4h8a4 4 0 014 4v8a4 4 0 01-4 4H8a4 4 0 01-4-4V8z"></path><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M17.5 6.5h.01"></path></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-sm transition-colors">Instagram Official</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </a>
-
-                <!-- 7. Layanan / Services -->
-                <button onclick="openServicesModal()" class="group relative w-full flex items-center justify-between p-4 bg-g7accent/40 hover:bg-g7accent clip-button transition-all duration-300 animate-item d-7 overflow-hidden border border-white/5">
-                    <div class="absolute inset-y-0 left-0 w-1 bg-g7gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-g7gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    <div class="flex items-center gap-4 relative z-10">
-                        <svg class="w-5 h-5 text-gray-400 group-hover:text-g7gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <span class="font-bold italic uppercase tracking-wider text-gray-300 group-hover:text-white text-[10px] sm:text-xs transition-colors text-left leading-tight">Paid Edit | Joki | Host Live & Room Tour | Admin Turnamen</span>
-                    </div>
-                    <span class="text-g7gold font-bold opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all relative z-10">➔</span>
-                </button>
-
-            </nav>
-
-            <footer class="mt-8 text-center border-t border-gray-800 pt-4 relative z-10">
-                <p class="text-gray-500 text-[10px] font-bold tracking-widest uppercase">
-                    &copy; 2026 G7 ESPORT ORGANIZATION
-                </p>
-            </footer>
+            <button onclick="openServiceFormModal()" class="g7-card fade-in-up flex items-center p-4 rounded-xl md:col-span-2 border-green-500/30 text-left w-full cursor-pointer" style="animation-delay: 0.8s;">
+                <div class="w-12 h-12 rounded-lg bg-green-900/40 flex items-center justify-center border border-green-500 mr-4 shrink-0">
+                    <i class="fas fa-bolt text-2xl text-green-400"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white uppercase tracking-wide text-green-400">Paid Edit | Joki | Host Live</h2>
+                    <p class="text-xs text-gray-300">Layanan Professional G7</p>
+                </div>
+            </button>
 
         </div>
+
+        <!-- G7 Management & Admin Team Section -->
+        <section class="mt-12 p-6 rounded-2xl g7-card border border-white/10 fade-in-up" style="animation-delay: 0.85s;">
+            <h3 class="text-xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-indigo-400 tracking-wider uppercase mb-6 flex items-center justify-center gap-2">
+                <i class="fas fa-users-gear text-green-400"></i> G7 MANAGEMENT & ADMIN
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                <!-- Owner & Founder -->
+                <div class="p-3 bg-black/40 rounded-xl border border-yellow-500/30 flex justify-between items-center">
+                    <span class="text-yellow-400 font-bold flex items-center gap-2"><i class="fas fa-crown text-xs"></i> Owner G7</span>
+                    <span class="text-white font-semibold">Acyen</span>
+                </div>
+                <div class="p-3 bg-black/40 rounded-xl border border-amber-500/30 flex justify-between items-center">
+                    <span class="text-amber-400 font-bold flex items-center gap-2"><i class="fas fa-star text-xs"></i> Founder G7</span>
+                    <span class="text-white font-semibold">Azeon</span>
+                </div>
+
+                <!-- Admin Pengaduan -->
+                <div class="p-3 bg-black/40 rounded-xl border border-red-500/30 flex justify-between items-center">
+                    <span class="text-red-400 font-bold flex items-center gap-2"><i class="fas fa-shield-halved text-xs"></i> Admin Pengaduan</span>
+                    <span class="text-white font-semibold">Rey</span>
+                </div>
+
+                <!-- Admin Opmem -->
+                <div class="p-3 bg-black/40 rounded-xl border border-green-500/30 flex justify-between items-center">
+                    <span class="text-green-400 font-bold flex items-center gap-2"><i class="fas fa-user-plus text-xs"></i> Admin Opmem</span>
+                    <span class="text-white font-semibold">Shela & Lilo</span>
+                </div>
+
+                <!-- Admin Grup -->
+                <div class="p-3 bg-black/40 rounded-xl border border-cyan-500/30 flex justify-between items-center">
+                    <span class="text-cyan-400 font-bold flex items-center gap-2"><i class="fas fa-comments text-xs"></i> Admin Grup</span>
+                    <span class="text-white font-semibold">Azra</span>
+                </div>
+
+                <!-- Admin Competitive Boy -->
+                <div class="p-3 bg-black/40 rounded-xl border border-blue-500/30 flex justify-between items-center">
+                    <span class="text-blue-400 font-bold flex items-center gap-2"><i class="fas fa-mars text-xs"></i> Admin Competitive Boy</span>
+                    <span class="text-white font-semibold">Kyle, Lamz & Fatt</span>
+                </div>
+
+                <!-- Admin Competitive Ladies -->
+                <div class="p-3 bg-black/40 rounded-xl border border-pink-500/30 flex justify-between items-center md:col-span-2">
+                    <span class="text-pink-400 font-bold flex items-center gap-2"><i class="fas fa-venus text-xs"></i> Admin Competitive Ladies</span>
+                    <span class="text-white font-semibold">Lora & Adiba</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center fade-in-up" style="animation-delay: 0.95s;">
+            <p class="text-sm text-gray-500 uppercase tracking-widest">&copy; 2026 G7 Official. All rights reserved.</p>
+        </footer>
+
     </main>
 
-    <div id="requirementsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-300">
-        
-        <div class="bg-g7card border border-gray-800 p-6 sm:p-8 w-full max-w-lg relative clip-esport max-h-[95vh] overflow-y-auto flex flex-col shadow-2xl shadow-g7gold/5">
+    <div id="academyModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+        <div id="modalContent" class="bg-[#0a0a0a] border border-green-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(0,255,136,0.15)] relative">
             
-            <!-- Elemen Dekoratif Modal -->
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-g7gold to-transparent opacity-50"></div>
+            <!-- Decorative border glow -->
+            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
             
-            <!-- Tombol Close Esport Style -->
-            <button onclick="closeModal()" aria-label="Tutup Modal" class="absolute top-4 right-4 text-gray-500 hover:text-white bg-g7dark border border-gray-800 hover:bg-red-600 hover:border-red-600 w-8 h-8 flex items-center justify-center transition-all z-20 clip-button">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            
-            <h2 id="modalTitle" class="text-2xl font-black italic uppercase text-white mb-6 text-center tracking-wider">
-                <span class="text-g7gold">SYARAT</span> JOIN ESPORT
-            </h2>
-            
-            <!-- Konten Syarat -->
-            <div id="requirementsContent" class="animate-item d-1">
-                <div class="bg-g7dark p-1 clip-esport mb-6 border border-gray-800">
-                    <ul class="flex flex-col text-sm font-medium text-gray-300 p-4 gap-4">
-                        <li class="flex items-center gap-3">
-                            <div class="w-2 h-2 bg-blue-500 rotate-45"></div> 
-                            <span><strong class="text-white">BOY HIGH RANK</strong> MINIMAL 170+</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-2 h-2 bg-pink-500 rotate-45"></div> 
-                            <span><strong class="text-white">GIRL HIGH RANK</strong> MINIMAL 110+</span>
-                        </li>
-                        <div class="w-full h-px bg-gray-800 my-1"></div>
-                        <div class="grid grid-cols-2 gap-4 text-xs">
-                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-g7gold"></div> <span><strong class="text-white">GOOD ATTITUDE</strong></span></li>
-                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-g7gold"></div> <span>USIA <strong class="text-white">16 TAHUN+</strong></span></li>
-                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-g7gold"></div> <span>AKTIF <strong class="text-white">SCRIM</strong></span></li>
-                            <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-g7gold"></div> <span>AKTIF <strong class="text-white">RANKED</strong></span></li>
-                            <li class="flex items-center gap-2 col-span-2"><div class="w-1.5 h-1.5 bg-g7gold"></div> <span>MEMILIKI <strong class="text-white">DISCORD, TIKTOK, IG</strong></span></li>
-                        </div>
-                        <div class="w-full h-px bg-gray-800 my-1"></div>
-                        <li class="flex items-center gap-3 text-red-400">
-                            <div class="w-2 h-2 bg-red-500 rotate-45"></div> 
-                            <span><strong class="text-white">DILARANG DOUBLE SQUAD & NO DRAMA</strong></span>
-                        </li>
-                    </ul>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/50">
+                    <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
                 </div>
-                
-                <button onclick="showForm()" class="w-full p-4 bg-g7gold hover:bg-g7goldHover text-black text-lg font-black italic uppercase tracking-wider transition-colors clip-button">
-                    SAYA MENGERTI & DAFTAR
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">HARAP DI BACA!</h2>
+                <p class="text-gray-400 text-sm mt-1">Persyaratan Seleksi Academy G7</p>
+            </div>
+
+            <ul class="space-y-3 mb-8 text-sm md:text-base font-medium text-gray-300">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>PERSYARATAN USIA MINIMAL 16 TAHUN</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>BOY MINIMAL HIGH RANK 170+</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>GIRL MINIMAL HIGH RANK 110+</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>MEMPUNYAI ATTITUDE YANG BAIK</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>AKTIF RANKED, AKTIF SCRIM & TOURNAMENT</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-green-500 mt-1 mr-3 shrink-0"></i>
+                    <span>MEMILIKI DISCORD, TIKTOK DAN INSTAGRAM</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG AKUN SMURF, DOUBLE SQUAD</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG DRAMA, DILARANG FAKE FOTO</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG MEMBUAT SKANDAL DAN NO DRAMA</span>
+                </li>
+            </ul>
+
+            <div class="flex gap-3">
+                <button onclick="closeModal()" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold tracking-wide">
+                    KEMBALI
+                </button>
+                <button onclick="proceedToForm()" class="w-2/3 py-3 rounded-lg bg-green-500 hover:bg-green-400 text-black shadow-[0_0_15px_rgba(0,255,136,0.4)] hover:shadow-[0_0_25px_rgba(0,255,136,0.6)] transition-all font-bold tracking-wide esports-font">
+                    SAYA SIAP & LANJUT
                 </button>
             </div>
-
-            <form id="registrationForm" class="hidden animate-item d-1 flex-col gap-5 text-sm" onsubmit="submitToWhatsApp(event)">
-                
-                <!-- Section: Data Diri -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-2 h-2 bg-g7gold rotate-45"></div>
-                        <p class="text-white font-bold text-xs tracking-widest uppercase">Data Personil</p>
-                        <div class="flex-1 h-px bg-gray-800"></div>
-                    </div>
-                    
-                    <div>
-                        <label for="regName" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Nama Lengkap</label>
-                        <input type="text" id="regName" required class="w-full esport-input p-2.5">
-                    </div>
-                    
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="regGender" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Kelamin</label>
-                            <select id="regGender" required class="w-full esport-input p-2.5 appearance-none cursor-pointer">
-                                <option value="" disabled selected class="bg-g7dark">Pilih...</option>
-                                <option value="Laki-laki" class="bg-g7dark">Laki-laki</option>
-                                <option value="Perempuan" class="bg-g7dark">Perempuan</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="regDob" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Tgl Lahir</label>
-                            <input type="date" id="regDob" required class="w-full esport-input p-2.5 cursor-pointer" style="color-scheme: dark;">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="regCity" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Asal Kota</label>
-                            <input type="text" id="regCity" required class="w-full esport-input p-2.5">
-                        </div>
-                        <div>
-                            <label for="regWa" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">No WhatsApp</label>
-                            <input type="tel" id="regWa" required placeholder="08..." class="w-full esport-input p-2.5">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section: Data Game -->
-                <div class="space-y-4 mt-2">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-2 h-2 bg-g7gold rotate-45"></div>
-                        <p class="text-white font-bold text-xs tracking-widest uppercase">Data In-Game & Sosial</p>
-                        <div class="flex-1 h-px bg-gray-800"></div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="regMlbb" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Nick MLBB</label>
-                            <input type="text" id="regMlbb" required class="w-full esport-input p-2.5">
-                        </div>
-                        <div>
-                            <label for="regRole" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Role Utama</label>
-                            <select id="regRole" required class="w-full esport-input p-2.5 appearance-none cursor-pointer">
-                                <option value="" disabled selected class="bg-g7dark">Pilih Role...</option>
-                                <option value="Roamer" class="bg-g7dark">Roamer</option>
-                                <option value="Midlaner" class="bg-g7dark">Midlaner</option>
-                                <option value="Gold Laner" class="bg-g7dark">Gold Laner</option>
-                                <option value="EXP Laner" class="bg-g7dark">EXP Laner</option>
-                                <option value="Jungler" class="bg-g7dark">Jungler</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="regRank" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">High Rank (Bintang)</label>
-                        <input type="number" id="regRank" required placeholder="Contoh: 155" class="w-full esport-input p-2.5">
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-3">
-                        <div>
-                            <label for="regTiktok" class="block text-gray-500 mb-1 text-[9px] uppercase font-bold tracking-wider">ID TikTok</label>
-                            <input type="text" id="regTiktok" required class="w-full esport-input p-2 text-xs">
-                        </div>
-                        <div>
-                            <label for="regDiscord" class="block text-gray-500 mb-1 text-[9px] uppercase font-bold tracking-wider">ID Discord</label>
-                            <input type="text" id="regDiscord" required class="w-full esport-input p-2 text-xs">
-                        </div>
-                        <div>
-                            <label for="regIg" class="block text-gray-500 mb-1 text-[9px] uppercase font-bold tracking-wider">ID Instagram</label>
-                            <input type="text" id="regIg" required class="w-full esport-input p-2 text-xs">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Section: Admin & Submit -->
-                <div class="mt-4 pt-4 border-t border-gray-800">
-                    <label for="regAdmin" class="block text-gray-500 mb-2 text-[10px] uppercase font-bold tracking-wider">Pilih Tujuan (Admin)</label>
-                    <div class="relative">
-                        <select id="regAdmin" required class="w-full bg-g7accent border border-gray-700 text-white p-3 outline-none appearance-none cursor-pointer clip-button text-sm font-bold">
-                            <option value="6281237638187">Admin 1 (0812-3763-8187)</option>
-                            <option value="628813461487">Admin 2 (0881-3461-487)</option>
-                        </select>
-                        <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-g7gold">▼</div>
-                    </div>
-                </div>
-
-                <div class="flex gap-3 mt-4">
-                    <button type="button" onclick="showRequirements()" class="w-1/3 p-3 bg-transparent border border-gray-600 hover:border-white text-gray-400 hover:text-white font-bold uppercase text-xs tracking-wider transition-colors clip-button">
-                        KEMBALI
-                    </button>
-                    <button type="submit" class="w-2/3 p-3 bg-g7gold hover:bg-g7goldHover text-black font-black italic uppercase tracking-wider transition-colors flex items-center justify-center gap-2 clip-button">
-                        <span>KIRIM VIA WA</span>
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                    </button>
-                </div>
-            </form>
-
         </div>
     </div>
 
-    <!-- Modal Layanan (Baru) -->
-    <div id="servicesModal" role="dialog" aria-modal="true" aria-labelledby="servicesModalTitle" class="fixed inset-0 z-50 opacity-0 pointer-events-none flex items-center justify-center p-4 bg-black/90 backdrop-blur-md transition-opacity duration-300">
-        
-        <div class="bg-g7card border border-gray-800 p-6 sm:p-8 w-full max-w-lg relative clip-esport max-h-[95vh] overflow-y-auto flex flex-col shadow-2xl shadow-g7gold/5">
+    <!-- Competitive Selection Modal -->
+    <div id="competitiveModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+        <div id="compModalContent" class="bg-[#0a0a0a] border border-cyan-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(0,243,255,0.15)] relative max-h-[90vh] overflow-y-auto">
             
-            <!-- Elemen Dekoratif Modal -->
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-g7gold to-transparent opacity-50"></div>
+            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
             
-            <button onclick="closeServicesModal()" aria-label="Tutup Modal" class="absolute top-4 right-4 text-gray-500 hover:text-white bg-g7dark border border-gray-800 hover:bg-red-600 hover:border-red-600 w-8 h-8 flex items-center justify-center transition-all z-20 clip-button">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            
-            <h2 id="servicesModalTitle" class="text-2xl font-black italic uppercase text-white mb-6 text-center tracking-wider">
-                <span class="text-g7gold">FORM</span> LAYANAN
-            </h2>
-            
-            <form id="servicesForm" class="flex flex-col gap-5 text-sm animate-item d-1" onsubmit="submitServicesToWhatsApp(event)">
-                
-                <!-- Section: Data Diri -->
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-2 h-2 bg-g7gold rotate-45"></div>
-                        <p class="text-white font-bold text-xs tracking-widest uppercase">Detail Pemesan</p>
-                        <div class="flex-1 h-px bg-gray-800"></div>
-                    </div>
-                    
-                    <div>
-                        <label for="servName" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Nama Lengkap</label>
-                        <input type="text" id="servName" required class="w-full esport-input p-2.5">
-                    </div>
-                    
-                    <div>
-                        <label for="servWa" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">No WhatsApp</label>
-                        <input type="tel" id="servWa" required placeholder="08..." class="w-full esport-input p-2.5">
-                    </div>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-red-500/50">
+                    <i class="fas fa-exclamation-triangle text-3xl text-red-500"></i>
                 </div>
-
-                <!-- Section: Pilihan Layanan -->
-                <div class="space-y-4 mt-2">
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-2 h-2 bg-g7gold rotate-45"></div>
-                        <p class="text-white font-bold text-xs tracking-widest uppercase">Detail Permintaan</p>
-                        <div class="flex-1 h-px bg-gray-800"></div>
-                    </div>
-
-                    <div>
-                        <label for="servType" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Jenis Layanan</label>
-                        <select id="servType" required class="w-full esport-input p-2.5 appearance-none cursor-pointer">
-                            <option value="" disabled selected class="bg-g7dark">Pilih Layanan...</option>
-                            <option value="Paid Edit" class="bg-g7dark">Paid Edit</option>
-                            <option value="Joki Akun" class="bg-g7dark">Joki Akun</option>
-                            <option value="Host Live & Room Tour" class="bg-g7dark">Host Live & Room Tour</option>
-                            <option value="Admin Turnamen" class="bg-g7dark">Admin Turnamen</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="servNotes" class="block text-gray-500 mb-1 text-[10px] uppercase font-bold tracking-wider">Catatan Tambahan</label>
-                        <textarea id="servNotes" rows="3" required placeholder="Jelaskan kebutuhan spesifik Anda..." class="w-full esport-input p-2.5 resize-none"></textarea>
-                    </div>
-                </div>
-
-                <!-- Section: Admin & Submit -->
-                <div class="mt-4 pt-4 border-t border-gray-800">
-                    <label class="block text-gray-500 mb-2 text-[10px] uppercase font-bold tracking-wider">Tujuan Admin Layanan</label>
-                    <div class="bg-g7accent border border-gray-700 text-white p-3 clip-button text-sm font-bold flex items-center justify-between">
-                        <span>Admin Layanan / Paid Edit</span>
-                        <span class="text-g7gold font-mono text-xs">0823-4181-5325</span>
-                    </div>
-                </div>
-
-                <div class="flex mt-4">
-                    <button type="submit" class="w-full p-4 bg-g7gold hover:bg-g7goldHover text-black font-black italic uppercase tracking-wider transition-colors flex items-center justify-center gap-2 clip-button">
-                        <span>KIRIM PESANAN VIA WA</span>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                    </button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-
-    <div id="waOverlay" class="fixed inset-0 z-[60] bg-black/95 backdrop-blur-lg hidden flex-col items-center justify-center p-6 text-center opacity-0 transition-opacity duration-300">
-        
-        <!-- Animasi Loading Tech -->
-        <div class="relative w-24 h-24 mb-8">
-            <div class="absolute inset-0 border-2 border-g7gold/30 rounded-full"></div>
-            <div class="absolute inset-0 border-2 border-g7gold border-t-transparent rounded-full animate-spin"></div>
-            <div class="absolute inset-4 border-2 border-white/20 border-b-transparent rounded-full animate-spin animation-direction-reverse" style="animation-direction: reverse; animation-duration: 1.5s;"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-g7gold font-mono text-xs">SYS</div>
-        </div>
-
-        <h3 class="text-3xl font-black italic text-white mb-2 tracking-widest">MEMPROSES<span class="text-g7gold">...</span></h3>
-        
-        <div id="waActionRequired" class="bg-g7card border border-g7gold/50 p-5 max-w-sm text-left shadow-[0_0_20px_rgba(255,184,0,0.1)] clip-esport mt-4">
-            <div class="flex items-center gap-2 mb-3 border-b border-gray-800 pb-2">
-                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                <p class="text-white font-bold text-xs uppercase tracking-wider">Tindakan Diperlukan</p>
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">HARAP DI BACA!</h2>
+                <p class="text-gray-400 text-sm mt-1">Persyaratan Seleksi Competitive G7</p>
             </div>
-            <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                Data teks telah disiapkan. Saat WhatsApp terbuka, Anda <strong class="text-g7gold">WAJIB</strong> melampirkan foto berikut secara manual:
-            </p>
-            <ul class="text-gray-300 text-[11px] space-y-1.5 font-semibold uppercase font-mono">
-                <li><span class="text-g7gold mr-2">›</span>SS Profile MLBB</li>
-                <li><span class="text-g7gold mr-2">›</span>SS Akun TikTok (CN G7 & Bio)</li>
-                <li><span class="text-g7gold mr-2">›</span>SS Follow TikTok G7</li>
-                <li><span class="text-g7gold mr-2">›</span>SS Follow Instagram G7</li>
-                <li><span class="text-g7gold mr-2">›</span>SS Discord (Nama x GEN7)</li>
-                <li><span class="text-g7gold mr-2">›</span>Foto Bebas</li>
+
+            <ul class="space-y-3 mb-8 text-sm md:text-base font-medium text-gray-300">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-cyan-400 mt-1 mr-3 shrink-0"></i>
+                    <span>BOY HIGH RANK: 250+ (GRADE C), 350+ (GRADE B), 450+ (GRADE A)</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-cyan-400 mt-1 mr-3 shrink-0"></i>
+                    <span>GIRL MINIMAL HIGH RANK 150+</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-clock text-amber-400 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-amber-200">MEMPUNYAI WAKTU LUANG DI ATAS JAM 20.00 WIB</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-cyan-400 mt-1 mr-3 shrink-0"></i>
+                    <span>MEMPUNYAI ATTITUDE YANG BAIK</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-cyan-400 mt-1 mr-3 shrink-0"></i>
+                    <span>AKTIF SCRIM & TOURNAMENT</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-cyan-400 mt-1 mr-3 shrink-0"></i>
+                    <span>MEMILIKI DISCORD, TIKTOK DAN INSTAGRAM</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG AKUN SMURF, DOUBLE SQUAD</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG DRAMA, DILARANG FAKE FOTO</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-times-circle text-red-500 mt-1 mr-3 shrink-0"></i>
+                    <span class="text-red-200">DILARANG MEMBUAT SKANDAL DAN NO DRAMA</span>
+                </li>
             </ul>
+
+            <div class="flex gap-3">
+                <button onclick="closeCompetitiveModal()" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold tracking-wide">
+                    KEMBALI
+                </button>
+                <button onclick="proceedToCompetitiveForm()" class="w-2/3 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-black shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)] transition-all font-bold tracking-wide esports-font">
+                    SAYA SIAP & LANJUT
+                </button>
+            </div>
         </div>
-        
-        <p class="text-gray-500 text-[10px] uppercase tracking-widest mt-8 font-bold">Membuka Aplikasi... <span id="countdown" class="text-g7gold text-lg ml-1">4</span></p>
     </div>
+
+    <!-- Form Seleksi Academy Modal -->
+    <div id="academyFormModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+        <div id="academyFormContent" class="bg-[#0a0a0a] border border-green-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(0,255,136,0.2)] relative max-h-[90vh] overflow-y-auto">
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-green-500/50">
+                    <i class="fas fa-file-signature text-2xl text-green-400"></i>
+                </div>
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">FORM ACADEMY G7</h2>
+                <p class="text-gray-400 text-xs mt-1">Isi data pendaftaran Anda dengan benar & jujur</p>
+            </div>
+
+            <!-- Error Notification Container -->
+            <div id="formErrorMessage" class="hidden mb-4 p-3 rounded-lg bg-red-500/20 border border-red-500 text-red-300 text-xs font-semibold flex items-center gap-2">
+                <i class="fas fa-circle-exclamation text-base shrink-0"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <form id="academyForm" onsubmit="handleAcademySubmit(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                    <input type="text" id="inputNama" required placeholder="Contoh: Budi Santoso" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nickname ML <span class="text-red-500">*</span></label>
+                    <input type="text" id="inputNickname" required placeholder="Contoh: G7 King" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">High Rank <span class="text-red-500">* (Min 170)</span></label>
+                        <input type="number" id="inputRank" min="170" required placeholder="Min 170" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Usia <span class="text-red-500">* (Min 16 Thn)</span></label>
+                        <input type="number" id="inputUsia" min="16" required placeholder="Min 16" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
+                    <input type="text" id="inputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Role Utama <span class="text-red-500">*</span></label>
+                        <select id="inputRole" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Role</option>
+                            <option value="Jungler">Jungler</option>
+                            <option value="EXP Laner">EXP Laner</option>
+                            <option value="Mid Laner">Mid Laner</option>
+                            <option value="Gold Laner">Gold Laner</option>
+                            <option value="Roamer">Roamer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Pilih Divisi <span class="text-red-500">* (1-21)</span></label>
+                        <select id="inputDivisi" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Divisi (1-21)</option>
+                            <!-- Auto-filled by JS -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeAcademyFormModal()" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold text-sm tracking-wide">
+                        BATAL
+                    </button>
+                    <button type="submit" id="btnSubmitForm" class="w-2/3 py-3 rounded-lg bg-green-500 hover:bg-green-400 text-black shadow-[0_0_15px_rgba(0,255,136,0.4)] hover:shadow-[0_0_25px_rgba(0,255,136,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA SELEKSI
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Form Seleksi Competitive Modal -->
+    <div id="competitiveFormModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+        <div id="competitiveFormContent" class="bg-[#0a0a0a] border border-cyan-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(0,243,255,0.2)] relative max-h-[90vh] overflow-y-auto">
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-cyan-500/50">
+                    <i class="fas fa-trophy text-2xl text-cyan-400"></i>
+                </div>
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">FORM COMPETITIVE G7</h2>
+                <p class="text-gray-400 text-xs mt-1">Isi data pendaftaran Anda dengan benar & jujur</p>
+            </div>
+
+            <!-- Error Notification Container -->
+            <div id="compFormErrorMessage" class="hidden mb-4 p-3 rounded-lg bg-red-500/20 border border-red-500 text-red-300 text-xs font-semibold flex items-center gap-2">
+                <i class="fas fa-circle-exclamation text-base shrink-0"></i>
+                <span id="compErrorText"></span>
+            </div>
+
+            <form id="competitiveForm" onsubmit="handleCompetitiveSubmit(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                    <input type="text" id="compInputNama" required placeholder="Contoh: Budi Santoso" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nickname ML <span class="text-red-500">*</span></label>
+                    <input type="text" id="compInputNickname" required placeholder="Contoh: G7 Pro" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">High Rank <span class="text-red-500">* (Min 250)</span></label>
+                        <input type="number" id="compInputRank" min="250" required placeholder="Min 250" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Usia <span class="text-red-500">* (Min 16 Thn)</span></label>
+                        <input type="number" id="compInputUsia" min="16" required placeholder="Min 16" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
+                    <input type="text" id="compInputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Role Utama <span class="text-red-500">*</span></label>
+                        <select id="compInputRole" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Role</option>
+                            <option value="Jungler">Jungler</option>
+                            <option value="EXP Laner">EXP Laner</option>
+                            <option value="Mid Laner">Mid Laner</option>
+                            <option value="Gold Laner">Gold Laner</option>
+                            <option value="Roamer">Roamer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Pilih Grade <span class="text-red-500">*</span></label>
+                        <select id="compInputGrade" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Grade</option>
+                            <option value="Grade C (250+)">Grade C (250+)</option>
+                            <option value="Grade B (350+)">Grade B (350+)</option>
+                            <option value="Grade A (450+)">Grade A (450+)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeCompetitiveFormModal()" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold text-sm tracking-wide">
+                        BATAL
+                    </button>
+                    <button type="submit" id="btnSubmitCompForm" class="w-2/3 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-black shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA SELEKSI
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Form Layanan (Paid Edit | Joki | Host Live) Modal -->
+    <div id="serviceFormModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+        <div id="serviceFormContent" class="bg-[#0a0a0a] border border-green-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(0,255,136,0.2)] relative max-h-[90vh] overflow-y-auto">
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-green-500/50">
+                    <i class="fas fa-concierge-bell text-2xl text-green-400"></i>
+                </div>
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">FORM LAYANAN G7</h2>
+                <p class="text-gray-400 text-xs mt-1">Paid Edit • Jasa Joki • Host Live Professional</p>
+            </div>
+
+            <!-- Error Notification Container -->
+            <div id="serviceFormErrorMessage" class="hidden mb-4 p-3 rounded-lg bg-red-500/20 border border-red-500 text-red-300 text-xs font-semibold flex items-center gap-2">
+                <i class="fas fa-circle-exclamation text-base shrink-0"></i>
+                <span id="serviceErrorText"></span>
+            </div>
+
+            <form id="serviceForm" onsubmit="handleServiceSubmit(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                    <input type="text" id="serviceNama" required placeholder="Contoh: Budi Santoso" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">No. WhatsApp <span class="text-red-500">*</span></label>
+                    <input type="tel" id="serviceWa" required placeholder="Contoh: 081234567890" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Pilih Layanan <span class="text-red-500">*</span></label>
+                    <select id="serviceLayanan" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                        <option value="" disabled selected>-- Pilih Jenis Layanan --</option>
+                        <option value="Paid Edit">Paid Edit (Video / Design)</option>
+                        <option value="Jasa Joki">Jasa Joki Rank</option>
+                        <option value="Host Live">Host Live Tournament / Event</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Catatan / Detail Pesanan</label>
+                    <textarea id="serviceCatatan" rows="3" placeholder="Tuliskan detail request, target rank, atau konsep video yang diinginkan..." class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors resize-none"></textarea>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeServiceFormModal()" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold text-sm tracking-wide">
+                        BATAL
+                    </button>
+                    <button type="submit" id="btnSubmitServiceForm" class="w-2/3 py-3 rounded-lg bg-green-500 hover:bg-green-400 text-black shadow-[0_0_15px_rgba(0,255,136,0.4)] hover:shadow-[0_0_25px_rgba(0,255,136,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA ADMIN
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden textarea for reliable copy to clipboard -->
+    <textarea id="copyHelper" class="sr-only"></textarea>
 
     <script>
-        const modal = document.getElementById('requirementsModal');
-        const servicesModal = document.getElementById('servicesModal');
+        const modal = document.getElementById('academyModal');
+        const modalContent = document.getElementById('modalContent');
+        
+        const compModal = document.getElementById('competitiveModal');
+        const compModalContent = document.getElementById('compModalContent');
+
+        const academyFormModal = document.getElementById('academyFormModal');
+        const academyFormContent = document.getElementById('academyFormContent');
+
+        const compFormModal = document.getElementById('competitiveFormModal');
+        const compFormContent = document.getElementById('competitiveFormContent');
+
+        const serviceFormModal = document.getElementById('serviceFormModal');
+        const serviceFormContent = document.getElementById('serviceFormContent');
+
+        // Populate Division Options (1-21)
+        const divisiSelect = document.getElementById('inputDivisi');
+        for (let i = 1; i <= 21; i++) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = `Divisi ${i}`;
+            divisiSelect.appendChild(opt);
+        }
 
         function openModal() {
-            modal.classList.remove('pointer-events-none');
-            modal.classList.add('opacity-100');
-            document.body.style.overflow = 'hidden'; 
-            showRequirements(); 
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            });
         }
 
         function closeModal() {
-            modal.classList.remove('opacity-100');
-            modal.classList.add('pointer-events-none');
-            document.body.style.overflow = 'auto'; 
-            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
             setTimeout(() => {
-                showRequirements();
+                modal.classList.add('hidden');
             }, 300);
         }
 
-        function openServicesModal() {
-            servicesModal.classList.remove('pointer-events-none');
-            servicesModal.classList.add('opacity-100');
-            document.body.style.overflow = 'hidden'; 
+        function openCompetitiveModal() {
+            compModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                compModal.classList.remove('opacity-0');
+                compModalContent.classList.remove('scale-95');
+                compModalContent.classList.add('scale-100');
+            });
         }
 
-        function closeServicesModal() {
-            servicesModal.classList.remove('opacity-100');
-            servicesModal.classList.add('pointer-events-none');
-            document.body.style.overflow = 'auto'; 
-            
+        function closeCompetitiveModal() {
+            compModal.classList.add('opacity-0');
+            compModalContent.classList.remove('scale-100');
+            compModalContent.classList.add('scale-95');
             setTimeout(() => {
-                document.getElementById('servicesForm').reset();
+                compModal.classList.add('hidden');
             }, 300);
         }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
-            }
-            if (event.target == servicesModal) {
-                closeServicesModal();
-            }
+        function openAcademyFormModal() {
+            document.getElementById('formErrorMessage').classList.add('hidden');
+            academyFormModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                academyFormModal.classList.remove('opacity-0');
+                academyFormContent.classList.remove('scale-95');
+                academyFormContent.classList.add('scale-100');
+            });
         }
 
-        function showForm() {
-            document.getElementById('requirementsContent').classList.add('hidden');
-            const form = document.getElementById('registrationForm');
-            form.classList.remove('hidden');
-            form.classList.add('flex');
-            document.getElementById('modalTitle').innerHTML = '<span class="text-g7gold">FORM</span> PENDAFTARAN';
-        }
-
-        function showRequirements() {
-            document.getElementById('requirementsContent').classList.remove('hidden');
-            const form = document.getElementById('registrationForm');
-            form.classList.add('hidden');
-            form.classList.remove('flex');
-            document.getElementById('modalTitle').innerHTML = '<span class="text-g7gold">SYARAT</span> JOIN ESPORT';
-        }
-
-        function submitToWhatsApp(event) {
-            event.preventDefault(); 
-
-            const nama = document.getElementById('regName').value;
-            const gender = document.getElementById('regGender').value;
-            const dob = document.getElementById('regDob').value;
-            const city = document.getElementById('regCity').value;
-            const wa = document.getElementById('regWa').value;
-            
-            const mlbb = document.getElementById('regMlbb').value;
-            const role = document.getElementById('regRole').value;
-            const rank = document.getElementById('regRank').value;
-            
-            const tiktok = document.getElementById('regTiktok').value;
-            const discord = document.getElementById('regDiscord').value;
-            const ig = document.getElementById('regIg').value;
-            
-            const adminNumber = document.getElementById('regAdmin').value;
-
-            const message = `Halo Admin G7 ESPORT, saya ingin mendaftar. Berikut data saya:
-
-*DATA PERSONIL*
-👤 Nama: ${nama}
-🚻 Kelamin: ${gender}
-🎂 Tgl Lahir: ${dob}
-🏙️ Kota: ${city}
-📞 WA: ${wa}
-
-*DATA IN-GAME*
-🎮 MLBB: ${mlbb}
-⚔️ Role: ${role}
-🌟 High Rank: ${rank}
-
-*AKUN SOSIAL*
-🎵 TikTok: ${tiktok}
-💬 Discord: ${discord}
-📸 IG: ${ig}
-
-*Catatan:* Saya akan melampirkan screenshot persyaratan (SS Profile ML, SS Akun TikTok, SS Follow TikTok G7, SS Follow IG G7, SS Akun Discord, dan Foto Bebas) setelah pesan ini.
-
-Terima kasih.`;
-
-            const overlay = document.getElementById('waOverlay');
-            const countdownEl = document.getElementById('countdown');
-            const waActionRequired = document.getElementById('waActionRequired');
-            
-            if (waActionRequired) waActionRequired.style.display = 'block';
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            
+        function closeAcademyFormModal() {
+            academyFormModal.classList.add('opacity-0');
+            academyFormContent.classList.remove('scale-100');
+            academyFormContent.classList.add('scale-95');
             setTimeout(() => {
-                overlay.classList.remove('opacity-0');
-                overlay.classList.add('opacity-100');
-            }, 10);
-
-            let timeLeft = 4;
-            countdownEl.innerText = timeLeft;
-            
-            const timer = setInterval(() => {
-                timeLeft -= 1;
-                countdownEl.innerText = timeLeft;
-                
-                if(timeLeft <= 0) {
-                    clearInterval(timer);
-                    const encodedMessage = encodeURIComponent(message);
-                    window.open(`https://wa.me/${adminNumber}?text=${encodedMessage}`, '_blank');
-                    
-                    setTimeout(() => {
-                        overlay.classList.remove('opacity-100');
-                        overlay.classList.add('opacity-0');
-                        setTimeout(() => {
-                            overlay.classList.add('hidden');
-                            overlay.classList.remove('flex');
-                            closeModal();
-                        }, 300);
-                    }, 1000);
-                }
-            }, 1000);
+                academyFormModal.classList.add('hidden');
+            }, 300);
         }
 
-        function submitServicesToWhatsApp(event) {
-            event.preventDefault(); 
+        function openCompetitiveFormModal() {
+            document.getElementById('compFormErrorMessage').classList.add('hidden');
+            compFormModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                compFormModal.classList.remove('opacity-0');
+                compFormContent.classList.remove('scale-95');
+                compFormContent.classList.add('scale-100');
+            });
+        }
 
-            const nama = document.getElementById('servName').value;
-            const wa = document.getElementById('servWa').value;
-            const type = document.getElementById('servType').value;
-            const notes = document.getElementById('servNotes').value;
-            const adminNumber = '6282341815325'; // Nomor tunggal khusus layanan
-
-            const message = `Halo Admin G7 ESPORT, saya tertarik untuk menggunakan Layanan/Jasa Anda. Berikut detail pemesanan saya:
-
-*DETAIL PEMESAN*
-👤 Nama: ${nama}
-📞 WA: ${wa}
-
-*DETAIL LAYANAN*
-🛠️ Layanan: ${type}
-📝 Catatan Tambahan: 
-${notes}
-
-Mohon informasi lebih lanjut mengenai ketersediaan, proses, dan harganya. Terima kasih.`;
-
-            const overlay = document.getElementById('waOverlay');
-            const countdownEl = document.getElementById('countdown');
-            const waActionRequired = document.getElementById('waActionRequired');
-            
-            // Sembunyikan peringatan SS (Screenshot) saat masuk via Layanan
-            if (waActionRequired) waActionRequired.style.display = 'none';
-            
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            
+        function closeCompetitiveFormModal() {
+            compFormModal.classList.add('opacity-0');
+            compFormContent.classList.remove('scale-100');
+            compFormContent.classList.add('scale-95');
             setTimeout(() => {
-                overlay.classList.remove('opacity-0');
-                overlay.classList.add('opacity-100');
-            }, 10);
-
-            let timeLeft = 3;
-            countdownEl.innerText = timeLeft;
-            
-            const timer = setInterval(() => {
-                timeLeft -= 1;
-                countdownEl.innerText = timeLeft;
-                
-                if(timeLeft <= 0) {
-                    clearInterval(timer);
-                    const encodedMessage = encodeURIComponent(message);
-                    window.open(`https://wa.me/${adminNumber}?text=${encodedMessage}`, '_blank');
-                    
-                    setTimeout(() => {
-                        overlay.classList.remove('opacity-100');
-                        overlay.classList.add('opacity-0');
-                        setTimeout(() => {
-                            overlay.classList.add('hidden');
-                            overlay.classList.remove('flex');
-                            closeServicesModal();
-                        }, 300);
-                    }, 1000);
-                }
-            }, 1000);
+                compFormModal.classList.add('hidden');
+            }, 300);
         }
+
+        function openServiceFormModal() {
+            document.getElementById('serviceFormErrorMessage').classList.add('hidden');
+            serviceFormModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                serviceFormModal.classList.remove('opacity-0');
+                serviceFormContent.classList.remove('scale-95');
+                serviceFormContent.classList.add('scale-100');
+            });
+        }
+
+        function closeServiceFormModal() {
+            serviceFormModal.classList.add('opacity-0');
+            serviceFormContent.classList.remove('scale-100');
+            serviceFormContent.classList.add('scale-95');
+            setTimeout(() => {
+                serviceFormModal.classList.add('hidden');
+            }, 300);
+        }
+
+        function proceedToForm() {
+            closeModal();
+            setTimeout(() => {
+                openAcademyFormModal();
+            }, 350);
+        }
+
+        function proceedToCompetitiveForm() {
+            closeCompetitiveModal();
+            setTimeout(() => {
+                openCompetitiveFormModal();
+            }, 350);
+        }
+
+        function handleAcademySubmit(e) {
+            e.preventDefault();
+            
+            const errorBox = document.getElementById('formErrorMessage');
+            const errorText = document.getElementById('errorText');
+            
+            const nama = document.getElementById('inputNama').value.trim();
+            const nickname = document.getElementById('inputNickname').value.trim();
+            const rank = parseInt(document.getElementById('inputRank').value, 10);
+            const usia = parseInt(document.getElementById('inputUsia').value, 10);
+            const kota = document.getElementById('inputKota').value.trim();
+            const role = document.getElementById('inputRole').value;
+            const divisi = document.getElementById('inputDivisi').value;
+
+            if (isNaN(rank) || rank < 170) {
+                errorText.innerText = "High Rank tidak memenuhi syarat! Minimal High Rank adalah 170.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (isNaN(usia) || usia < 16) {
+                errorText.innerText = "Usia tidak memenuhi syarat! Minimal usia pendaftar adalah 16 tahun.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (!nama || !nickname || !kota || !role || !divisi) {
+                errorText.innerText = "Semua kolom dengan tanda bintang (*) wajib diisi!";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            errorBox.classList.add('hidden');
+
+            const message = `📋 *FORM PENDAFTARAN SELEKSI ACADEMY G7*\n\n` +
+                            `👤 *Nama:* ${nama}\n` +
+                            `🎮 *Nickname ML:* ${nickname}\n` +
+                            `🏆 *High Rank:* ${rank}\n` +
+                            `📍 *Asal Kota:* ${kota}\n` +
+                            `🎂 *Usia:* ${usia} Tahun\n` +
+                            `⚔️ *Role Utama:* ${role}\n` +
+                            `🔰 *Pilihan Divisi:* Divisi ${divisi}\n\n` +
+                            `------------------------------\n` +
+                            `Saya menyatakan data di atas diisi dengan benar & jujur. Siap mengikuti seleksi G7 OFFICIAL!`;
+
+            const copyHelper = document.getElementById('copyHelper');
+            copyHelper.value = message;
+            copyHelper.select();
+            document.execCommand('copy');
+
+            const btnSubmit = document.getElementById('btnSubmitForm');
+            btnSubmit.innerHTML = '<i class="fas fa-check"></i> DATA DISALIN! MEMBUKA WA...';
+            btnSubmit.classList.remove('bg-green-500', 'hover:bg-green-400');
+            btnSubmit.classList.add('bg-cyan-400', 'text-black');
+
+            setTimeout(() => {
+                closeAcademyFormModal();
+                window.open('https://chat.whatsapp.com/BZIvLBjWIFcCRGd3CfdMXd', '_blank');
+
+                setTimeout(() => {
+                    document.getElementById('academyForm').reset();
+                    btnSubmit.innerHTML = '<i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA SELEKSI';
+                    btnSubmit.classList.remove('bg-cyan-400');
+                    btnSubmit.classList.add('bg-green-500', 'hover:bg-green-400');
+                }, 1000);
+            }, 1200);
+        }
+
+        function handleCompetitiveSubmit(e) {
+            e.preventDefault();
+            
+            const errorBox = document.getElementById('compFormErrorMessage');
+            const errorText = document.getElementById('compErrorText');
+            
+            const nama = document.getElementById('compInputNama').value.trim();
+            const nickname = document.getElementById('compInputNickname').value.trim();
+            const rank = parseInt(document.getElementById('compInputRank').value, 10);
+            const usia = parseInt(document.getElementById('compInputUsia').value, 10);
+            const kota = document.getElementById('compInputKota').value.trim();
+            const role = document.getElementById('compInputRole').value;
+            const grade = document.getElementById('compInputGrade').value;
+
+            if (isNaN(rank) || rank < 250) {
+                errorText.innerText = "High Rank tidak memenuhi syarat! Minimal High Rank Competitive adalah 250.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (isNaN(usia) || usia < 16) {
+                errorText.innerText = "Usia tidak memenuhi syarat! Minimal usia pendaftar adalah 16 tahun.";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            if (!nama || !nickname || !kota || !role || !grade) {
+                errorText.innerText = "Semua kolom dengan tanda bintang (*) wajib diisi!";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            errorBox.classList.add('hidden');
+
+            const message = `📋 *FORM PENDAFTARAN SELEKSI COMPETITIVE G7*\n\n` +
+                            `👤 *Nama:* ${nama}\n` +
+                            `🎮 *Nickname ML:* ${nickname}\n` +
+                            `🏆 *High Rank:* ${rank}\n` +
+                            `📍 *Asal Kota:* ${kota}\n` +
+                            `🎂 *Usia:* ${usia} Tahun\n` +
+                            `⚔️ *Role Utama:* ${role}\n` +
+                            `🥇 *Pilihan Grade:* ${grade}\n\n` +
+                            `------------------------------\n` +
+                            `Saya menyatakan data di atas diisi dengan benar & jujur. Siap mengikuti seleksi Competitive G7 OFFICIAL!`;
+
+            const copyHelper = document.getElementById('copyHelper');
+            copyHelper.value = message;
+            copyHelper.select();
+            document.execCommand('copy');
+
+            const btnSubmit = document.getElementById('btnSubmitCompForm');
+            btnSubmit.innerHTML = '<i class="fas fa-check"></i> DATA DISALIN! MEMBUKA WA...';
+            btnSubmit.classList.remove('bg-cyan-400', 'hover:bg-cyan-300');
+            btnSubmit.classList.add('bg-green-500', 'text-black');
+
+            setTimeout(() => {
+                closeCompetitiveFormModal();
+                window.open('https://chat.whatsapp.com/Ci5e44KhtMjAPBiFluqmLU', '_blank');
+
+                setTimeout(() => {
+                    document.getElementById('competitiveForm').reset();
+                    btnSubmit.innerHTML = '<i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA SELEKSI';
+                    btnSubmit.classList.remove('bg-green-500');
+                    btnSubmit.classList.add('bg-cyan-400', 'hover:bg-cyan-300');
+                }, 1000);
+            }, 1200);
+        }
+
+        function handleServiceSubmit(e) {
+            e.preventDefault();
+            
+            const errorBox = document.getElementById('serviceFormErrorMessage');
+            const errorText = document.getElementById('serviceErrorText');
+            
+            const nama = document.getElementById('serviceNama').value.trim();
+            const wa = document.getElementById('serviceWa').value.trim();
+            const layanan = document.getElementById('serviceLayanan').value;
+            const catatan = document.getElementById('serviceCatatan').value.trim() || '-';
+
+            if (!nama || !wa || !layanan) {
+                errorText.innerText = "Semua kolom dengan tanda bintang (*) wajib diisi!";
+                errorBox.classList.remove('hidden');
+                return;
+            }
+
+            errorBox.classList.add('hidden');
+
+            const message = `🛠️ *FORM PEMESANAN LAYANAN G7 OFFICIAL*\n\n` +
+                            `👤 *Nama Lengkap:* ${nama}\n` +
+                            `📱 *No. WhatsApp:* ${wa}\n` +
+                            `💼 *Pilihan Layanan:* ${layanan}\n` +
+                            `📝 *Catatan / Detail Pesanan:* ${catatan}\n\n` +
+                            `------------------------------\n` +
+                            `Halo Admin G7, saya tertarik memesan layanan di atas. Mohon informasi & proses selanjutnya!`;
+
+            const copyHelper = document.getElementById('copyHelper');
+            copyHelper.value = message;
+            copyHelper.select();
+            document.execCommand('copy');
+
+            const btnSubmit = document.getElementById('btnSubmitServiceForm');
+            btnSubmit.innerHTML = '<i class="fas fa-check"></i> DATA DISALIN! MEMBUKA WA ADMIN...';
+            btnSubmit.classList.remove('bg-green-500', 'hover:bg-green-400');
+            btnSubmit.classList.add('bg-cyan-400', 'text-black');
+
+            const waAdminUrl = `https://wa.me/6282341815325?text=${encodeURIComponent(message)}`;
+
+            setTimeout(() => {
+                closeServiceFormModal();
+                window.open(waAdminUrl, '_blank');
+
+                setTimeout(() => {
+                    document.getElementById('serviceForm').reset();
+                    btnSubmit.innerHTML = '<i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA ADMIN';
+                    btnSubmit.classList.remove('bg-cyan-400');
+                    btnSubmit.classList.add('bg-green-500', 'hover:bg-green-400');
+                }, 1000);
+            }, 1200);
+        }
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        compModal.addEventListener('click', function(e) {
+            if (e.target === compModal) closeCompetitiveModal();
+        });
+
+        academyFormModal.addEventListener('click', function(e) {
+            if (e.target === academyFormModal) closeAcademyFormModal();
+        });
+
+        compFormModal.addEventListener('click', function(e) {
+            if (e.target === compFormModal) closeCompetitiveFormModal();
+        });
+
+        serviceFormModal.addEventListener('click', function(e) {
+            if (e.target === serviceFormModal) closeServiceFormModal();
+        });
     </script>
 </body>
 </html>
