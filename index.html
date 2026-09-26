@@ -450,9 +450,19 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
-                    <input type="text" id="inputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Jenis Kelamin <span class="text-red-500">*</span></label>
+                        <select id="inputGender" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Gender</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
+                        <input type="text" id="inputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-green-500 focus:outline-none transition-colors">
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
@@ -528,11 +538,21 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
-                    <input type="text" id="compInputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Jenis Kelamin <span class="text-red-500">*</span></label>
+                        <select id="compInputGender" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Gender</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Asal Kota <span class="text-red-500">*</span></label>
+                        <input type="text" id="compInputKota" required placeholder="Contoh: Jakarta" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                    </div>
                 </div>
-
+                
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Role Utama <span class="text-red-500">*</span></label>
@@ -545,13 +565,12 @@
                             <option value="Roamer">Roamer</option>
                         </select>
                     </div>
-                    <!-- Added missing Gender selector -->
                     <div>
-                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Gender <span class="text-red-500">*</span></label>
-                        <select id="compInputGender" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
-                            <option value="" disabled selected>Pilih Gender</option>
-                            <option value="Boy">Boy</option>
-                            <option value="Girl">Girl</option>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Kategori Tim <span class="text-red-500">*</span></label>
+                        <select id="compInputKategori" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-cyan-500 focus:outline-none transition-colors">
+                            <option value="" disabled selected>Pilih Kategori</option>
+                            <option value="Boy">Comp Boy</option>
+                            <option value="Ladies">Comp Ladies</option>
                         </select>
                     </div>
                 </div>
@@ -560,7 +579,7 @@
                     <button type="button" onclick="closeModal('competitiveFormModal', 'competitiveFormContent')" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold text-sm tracking-wide">
                         BATAL
                     </button>
-                    <button type="submit" id="btnSubmitCompForm" class="w-2/3 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-black shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
+                    <button type="submit" class="w-2/3 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-black shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
                         <i class="fab fa-whatsapp text-lg"></i> KIRIM KE WA
                     </button>
                 </div>
@@ -568,7 +587,7 @@
         </div>
     </div>
 
-    <!-- Form Professional Service Modal -->
+    <!-- Service Form Modal -->
     <div id="serviceFormModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
         <div id="serviceFormContent" class="bg-[#0a0a0a] border border-purple-500/50 p-6 md:p-8 rounded-2xl w-full max-w-lg transform scale-95 transition-transform duration-300 shadow-[0_0_30px_rgba(176,38,255,0.2)] relative max-h-[90vh] overflow-y-auto">
             
@@ -576,8 +595,8 @@
                 <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-2 border border-purple-500/50">
                     <i class="fas fa-bolt text-2xl text-purple-400"></i>
                 </div>
-                <h2 class="text-2xl font-black text-white tracking-wider esports-font">LAYANAN PRO G7</h2>
-                <p class="text-gray-400 text-xs mt-1">Isi formulir pemesanan layanan kami di bawah ini</p>
+                <h2 class="text-2xl font-black text-white tracking-wider esports-font">LAYANAN G7</h2>
+                <p class="text-gray-400 text-xs mt-1">Pilih layanan yang Anda butuhkan (Edit/Joki/Host)</p>
             </div>
 
             <!-- Error Notification Container -->
@@ -588,31 +607,31 @@
 
             <form id="serviceForm" onsubmit="handleServiceSubmit(event)" class="space-y-4 text-left">
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nama / Nickname <span class="text-red-500">*</span></label>
-                    <input type="text" id="svcInputNama" required placeholder="Contoh: Rian" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors">
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Nama / Panggilan <span class="text-red-500">*</span></label>
+                    <input type="text" id="svcInputNama" required placeholder="Nama Anda" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Pilih Layanan <span class="text-red-500">*</span></label>
-                    <select id="svcInputType" required onchange="toggleServiceDetails(this.value)" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors">
-                        <option value="" disabled selected>Pilih Jenis Layanan</option>
-                        <option value="Paid Edit">Paid Edit Video</option>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Jenis Layanan <span class="text-red-500">*</span></label>
+                    <select id="svcInputJenis" required class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors">
+                        <option value="" disabled selected>Pilih Layanan</option>
+                        <option value="Paid Edit">Paid Edit (Video/Foto/Design)</option>
                         <option value="Joki Rank">Joki Rank MLBB</option>
                         <option value="Host Live">Host Live Streaming</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Detail / Request Khusus <span class="text-red-500">*</span></label>
-                    <textarea id="svcInputDetail" required placeholder="Sebutkan detail pesanan (contoh: Joki dari Epic ke Mythic, atau Edit jedag-jedug)" rows="3" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors resize-none"></textarea>
+                    <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1">Detail Kebutuhan <span class="text-red-500">*</span></label>
+                    <textarea id="svcInputDetail" required placeholder="Jelaskan kebutuhan Anda secara singkat..." rows="3" class="w-full bg-black/60 border border-gray-700 rounded-lg p-3 text-sm text-white focus:border-purple-500 focus:outline-none transition-colors resize-none"></textarea>
                 </div>
 
                 <div class="flex gap-3 pt-4">
                     <button type="button" onclick="closeModal('serviceFormModal', 'serviceFormContent')" class="w-1/3 py-3 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors font-bold text-sm tracking-wide">
                         BATAL
                     </button>
-                    <button type="submit" id="btnSubmitSvcForm" class="w-2/3 py-3 rounded-lg bg-purple-500 hover:bg-purple-400 text-white shadow-[0_0_15px_rgba(176,38,255,0.4)] hover:shadow-[0_0_25px_rgba(176,38,255,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp text-lg"></i> PESAN SEKARANG
+                    <button type="submit" class="w-2/3 py-3 rounded-lg bg-purple-500 hover:bg-purple-400 text-black shadow-[0_0_15px_rgba(176,38,255,0.4)] hover:shadow-[0_0_25px_rgba(176,38,255,0.6)] transition-all font-bold text-sm tracking-wide esports-font flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> HUBUNGI ADMIN
                     </button>
                 </div>
             </form>
@@ -620,36 +639,33 @@
     </div>
 
     <script>
-        // --- Constants & Config ---
-        // Ganti nomor ini dengan nomor WhatsApp admin yang sebenarnya (Format: 628xxxxxxxxxx)
-        const WA_ADMIN_ACADEMY = "6281234567890"; 
-        const WA_ADMIN_COMPETITIVE = "6280987654321";
-        const WA_ADMIN_SERVICE = "6281122334455";
+        // WhatsApp Admin Contacts (Configure these to your actual team numbers)
+        const WA_ADMIN_ACADEMY = "6281234567890";
+        const WA_ADMIN_COMPETITIVE = "6281234567891";
+        const WA_ADMIN_SERVICE = "6281234567892";
 
-        // --- Initialization ---
+        // Initialize Divisi options for Academy Form
         document.addEventListener('DOMContentLoaded', () => {
-            // Populate Divisi 1-21 for Academy Form
-            const divSelect = document.getElementById('inputDivisi');
-            if(divSelect) {
-                for (let i = 1; i <= 21; i++) {
-                    let opt = document.createElement('option');
-                    opt.value = `Divisi ${i}`;
-                    opt.innerHTML = `Divisi ${i}`;
-                    divSelect.appendChild(opt);
-                }
+            const selectDivisi = document.getElementById('inputDivisi');
+            for(let i=1; i<=21; i++) {
+                const opt = document.createElement('option');
+                opt.value = 'Divisi ' + i;
+                opt.textContent = 'Divisi ' + i;
+                selectDivisi.appendChild(opt);
             }
         });
 
-        // --- UI Functions (Modals) ---
+        // Modal Controls
         function openModal(modalId, contentId) {
             const modal = document.getElementById(modalId);
             const content = document.getElementById(contentId);
-            
             modal.classList.remove('hidden');
-            // Trigger reflow
-            void modal.offsetWidth;
+            
+            // Force browser reflow to enable transition
+            void modal.offsetWidth; 
             
             modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
             content.classList.remove('scale-95');
             content.classList.add('scale-100');
         }
@@ -658,13 +674,15 @@
             const modal = document.getElementById(modalId);
             const content = document.getElementById(contentId);
             
+            modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
             content.classList.remove('scale-100');
             content.classList.add('scale-95');
             
+            // Wait for transition to finish before hiding
             setTimeout(() => {
                 modal.classList.add('hidden');
-            }, 300); // Matches the Tailwind duration-300
+            }, 300);
         }
 
         function switchModal(closeModalId, closeContentId, openModalId, openContentId) {
@@ -674,184 +692,106 @@
             }, 300);
         }
 
-        function showError(containerId, textId, message) {
-            const container = document.getElementById(containerId);
-            const textEl = document.getElementById(textId);
-            textEl.textContent = message;
-            container.classList.remove('hidden');
-            setTimeout(() => {
-                container.classList.add('hidden');
-            }, 5000); // Hide after 5 seconds
+        // Error Handling Utilities
+        function showError(containerId, textId, msg) {
+            document.getElementById(textId).innerText = msg;
+            document.getElementById(containerId).classList.remove('hidden');
         }
 
-        // --- Form Handlers ---
-        function handleAcademySubmit(e) {
-            e.preventDefault();
+        function hideError(containerId) {
+            document.getElementById(containerId).classList.add('hidden');
+        }
+
+        // Form Submit Handlers
+        function handleAcademySubmit(event) {
+            event.preventDefault();
             
             const nama = document.getElementById('inputNama').value.trim();
-            const nickname = document.getElementById('inputNickname').value.trim();
+            const nick = document.getElementById('inputNickname').value.trim();
             const rank = parseInt(document.getElementById('inputRank').value);
             const usia = parseInt(document.getElementById('inputUsia').value);
+            const gender = document.getElementById('inputGender').value;
             const kota = document.getElementById('inputKota').value.trim();
             const role = document.getElementById('inputRole').value;
             const divisi = document.getElementById('inputDivisi').value;
 
-            // Validations
+            // Validation Rules
+            if(gender === "Laki-laki" && rank < 170) {
+                showError('formErrorMessage', 'errorText', 'Pendaftaran Gagal: Rank minimal untuk Boy Division adalah 170.');
+                return;
+            }
+            if(gender === "Perempuan" && rank < 110) {
+                showError('formErrorMessage', 'errorText', 'Pendaftaran Gagal: Rank minimal untuk Girl Division adalah 110.');
+                return;
+            }
             if(usia < 16) {
-                showError('formErrorMessage', 'errorText', 'Mohon maaf, usia minimal pendaftaran adalah 16 tahun.');
-                return;
-            }
-            // General rank requirement check (Boy 170 / Girl 110). Since we don't ask gender here explicitly, checking minimum 110.
-            if(rank < 110) {
-                showError('formErrorMessage', 'errorText', 'Rank belum memenuhi syarat minimum (110).');
+                showError('formErrorMessage', 'errorText', 'Pendaftaran Gagal: Persyaratan usia minimal adalah 16 Tahun.');
                 return;
             }
 
-            // Construct Message for Clipboard (Using standard newlines \n for clipboard pasting)
-            const message = `Halo Admin G7, saya ingin mendaftar seleksi *ACADEMY G7*. Berikut data saya:\n\n`
-                          + `👤 *Nama:* ${nama}\n`
-                          + `🎮 *Nickname ML:* ${nickname}\n`
-                          + `🏆 *High Rank:* ${rank}\n`
-                          + `📅 *Usia:* ${usia} Tahun\n`
-                          + `🏙️ *Asal Kota:* ${kota}\n`
-                          + `⚔️ *Role Utama:* ${role}\n`
-                          + `🔰 *Pilihan:* ${divisi}\n\n`
-                          + `Saya bersedia mengikuti peraturan dan siap diseleksi. Terima kasih.`;
+            hideError('formErrorMessage');
             
-            // Copy to clipboard using execCommand as fallback for wide compatibility
-            const copyText = document.createElement("textarea");
-            document.body.appendChild(copyText);
-            copyText.value = message;
-            copyText.select();
-            document.execCommand("copy");
-            document.body.removeChild(copyText);
-
-            // Update UI to inform user they need to paste
-            const btn = document.getElementById('btnSubmitForm');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = `<i class="fas fa-copy text-lg"></i> TEKS DICOPY! PASTE DI GRUP...`;
-            btn.classList.remove('bg-green-500', 'hover:bg-green-400');
-            btn.classList.add('bg-yellow-400', 'hover:bg-yellow-300');
+            // Construct WhatsApp Message
+            const message = `Halo Admin G7,%0A%0ASaya tertarik untuk bergabung di *GC Seleksi Academy*. Berikut data diri saya:%0A%0A*Nama:* ${nama}%0A*Nickname ML:* ${nick}%0A*Gender:* ${gender}%0A*High Rank:* ${rank}%0A*Usia:* ${usia} Tahun%0A*Domisili:* ${kota}%0A*Role:* ${role}%0A*Pilihan Divisi:* ${divisi}%0A%0ASaya telah membaca & menyetujui seluruh persyaratan. Mohon info proses seleksi selanjutnya. Terima kasih.`;
             
-            // Redirect to WhatsApp Group after short delay
-            setTimeout(() => {
-                window.open('https://chat.whatsapp.com/BZIvLBjWIFcCRGd3CfdMXd', '_blank');
-                closeModal('academyFormModal', 'academyFormContent');
-                e.target.reset();
-                
-                // Revert button state for future uses
-                btn.innerHTML = originalText;
-                btn.classList.remove('bg-yellow-400', 'hover:bg-yellow-300');
-                btn.classList.add('bg-green-500', 'hover:bg-green-400');
-            }, 2500);
+            window.open(`https://wa.me/${WA_ADMIN_ACADEMY}?text=${message}`, '_blank');
+            closeModal('academyFormModal', 'academyFormContent');
         }
 
-        function handleCompetitiveSubmit(e) {
-            e.preventDefault();
+        function handleCompetitiveSubmit(event) {
+            event.preventDefault();
             
             const nama = document.getElementById('compInputNama').value.trim();
-            const nickname = document.getElementById('compInputNickname').value.trim();
+            const nick = document.getElementById('compInputNickname').value.trim();
             const rank = parseInt(document.getElementById('compInputRank').value);
             const usia = parseInt(document.getElementById('compInputUsia').value);
+            const gender = document.getElementById('compInputGender').value;
             const kota = document.getElementById('compInputKota').value.trim();
             const role = document.getElementById('compInputRole').value;
-            const gender = document.getElementById('compInputGender').value;
+            const kategori = document.getElementById('compInputKategori').value;
 
-            // Validations
-            if(usia < 16) {
-                showError('compFormErrorMessage', 'compErrorText', 'Mohon maaf, usia minimal pendaftaran adalah 16 tahun.');
+            // Validation Rules
+            if (kategori === "Boy" && rank < 250) {
+                showError('compFormErrorMessage', 'compErrorText', 'Untuk kategori Boy, High Rank minimal adalah 250 (Grade C).');
                 return;
             }
-            if(gender === 'Boy' && rank < 250) {
-                showError('compFormErrorMessage', 'compErrorText', 'Rank minimum untuk Boy Competitive adalah 250.');
+            if (kategori === "Ladies" && rank < 150) {
+                showError('compFormErrorMessage', 'compErrorText', 'Untuk kategori Ladies, High Rank minimal adalah 150.');
                 return;
             }
-            if(gender === 'Girl' && rank < 150) {
-                showError('compFormErrorMessage', 'compErrorText', 'Rank minimum untuk Girl Competitive adalah 150.');
+            if (usia < 16) {
+                showError('compFormErrorMessage', 'compErrorText', 'Persyaratan usia minimal adalah 16 Tahun.');
                 return;
             }
 
-            // Determine Grade for boys based on rank
-        let grade = "";
-        if(gender === 'Boy') {
-            if(rank >= 450) grade = " (Grade A)";
-            else if(rank >= 350) grade = " (Grade B)";
-            else if(rank >= 250) grade = " (Grade C)";
-        }
-
-        // Construct Message for Clipboard (Using standard newlines \n for clipboard pasting)
-        const message = `Halo Admin G7, saya ingin mendaftar seleksi *COMPETITIVE G7*. Berikut data saya:\n\n`
-                      + `👤 *Nama:* ${nama}\n`
-                      + `🎮 *Nickname ML:* ${nickname}\n`
-                      + `🚻 *Gender:* ${gender}\n`
-                      + `🏆 *High Rank:* ${rank}${grade}\n`
-                      + `📅 *Usia:* ${usia} Tahun\n`
-                      + `🏙️ *Asal Kota:* ${kota}\n`
-                      + `⚔️ *Role Utama:* ${role}\n\n`
-                      + `Saya memiliki waktu luang malam hari dan siap mengikuti jadwal scrim. Terima kasih.`;
-        
-        // Copy to clipboard using execCommand as fallback for wide compatibility
-        const copyText = document.createElement("textarea");
-        document.body.appendChild(copyText);
-        copyText.value = message;
-        copyText.select();
-        document.execCommand("copy");
-        document.body.removeChild(copyText);
-
-        // Update UI to inform user they need to paste
-        const btn = document.getElementById('btnSubmitCompForm');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = `<i class="fas fa-copy text-lg"></i> TEKS DICOPY! PASTE DI GRUP...`;
-        btn.classList.remove('bg-cyan-400', 'hover:bg-cyan-300', 'text-black');
-        btn.classList.add('bg-yellow-400', 'hover:bg-yellow-300', 'text-black');
-        
-        // Redirect to WhatsApp Group after short delay
-        setTimeout(() => {
-            window.open('https://chat.whatsapp.com/Ci5e44KhtMjAPBiFluqmLU', '_blank');
-            closeModal('competitiveFormModal', 'competitiveFormContent');
-            e.target.reset();
+            hideError('compFormErrorMessage');
             
-            // Revert button state for future uses
-            btn.innerHTML = originalText;
-            btn.classList.remove('bg-yellow-400', 'hover:bg-yellow-300');
-            btn.classList.add('bg-cyan-400', 'hover:bg-cyan-300');
-        }, 2500);
-    }
-
-    function toggleServiceDetails(type) {
-            const textarea = document.getElementById('svcInputDetail');
-            if (type === 'Paid Edit') {
-                textarea.placeholder = "Sebutkan style edit (cth: jedag-jedug, montage, cinematic) & link aset video...";
-            } else if (type === 'Joki Rank') {
-                textarea.placeholder = "Sebutkan Rank Awal & Rank Tujuan (cth: Epic 3 ke Mythic Romawi)...";
-            } else if (type === 'Host Live') {
-                textarea.placeholder = "Sebutkan platform, durasi live, dan jadwal yang diinginkan...";
-            }
+            // Construct WhatsApp Message
+            const message = `Halo Admin G7,%0A%0ASaya ingin mendaftar roster *Competitive ${kategori}*. Berikut data saya:%0A%0A*Nama:* ${nama}%0A*Nickname ML:* ${nick}%0A*Gender:* ${gender}%0A*High Rank:* ${rank}%0A*Usia:* ${usia} Tahun%0A*Domisili:* ${kota}%0A*Role:* ${role}%0A%0ASaya siap trial & mematuhi aturan G7. Mohon info jadwal scrim/seleksi. Terima kasih.`;
+            
+            window.open(`https://wa.me/${WA_ADMIN_COMPETITIVE}?text=${message}`, '_blank');
+            closeModal('competitiveFormModal', 'competitiveFormContent');
         }
 
-        function handleServiceSubmit(e) {
-            e.preventDefault();
+        function handleServiceSubmit(event) {
+            event.preventDefault();
             
             const nama = document.getElementById('svcInputNama').value.trim();
-            const tipe = document.getElementById('svcInputType').value;
+            const jenis = document.getElementById('svcInputJenis').value;
             const detail = document.getElementById('svcInputDetail').value.trim();
 
-            if(!tipe) {
-                showError('serviceFormErrorMessage', 'serviceErrorText', 'Harap pilih jenis layanan.');
+            if(!nama || !jenis || !detail) {
+                showError('serviceFormErrorMessage', 'serviceErrorText', 'Harap isi semua kolom dengan lengkap.');
                 return;
             }
 
+            hideError('serviceFormErrorMessage');
+
             // Construct WhatsApp Message
-            const message = `Halo Admin G7 Professional Services,%0A%0A`
-                          + `Saya ingin memesan layanan *${tipe}*.%0A%0A`
-                          + `👤 *Pemesan:* ${nama}%0A`
-                          + `📝 *Detail Request:*%0A${detail}%0A%0A`
-                          + `Mohon info pricelist dan kelanjutannya. Terima kasih.`;
+            const message = `Halo Admin G7 Services,%0A%0ASaya ingin menggunakan layanan *${jenis}*.%0A%0A*Nama:* ${nama}%0A*Detail Kebutuhan:* ${detail}%0A%0AMohon informasi lebih lanjut mengenai harga dan prosesnya. Terima kasih.`;
             
-            // Redirect
             window.open(`https://wa.me/${WA_ADMIN_SERVICE}?text=${message}`, '_blank');
             closeModal('serviceFormModal', 'serviceFormContent');
-            e.target.reset();
         }
     </script>
 </body>
